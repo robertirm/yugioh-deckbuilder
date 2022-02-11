@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Yu-Gi-Oh DeckBuilder</title>
+    <link rel="icon" th:href="@{/img/content/favicon.ico}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{css/styles.css}" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        &nbsp;&nbsp;
+        <img th:src="@{/img/content/logo.png}" alt="logo" height="50">
+        <a class="navbar-brand" th:href="@{'/cardlist/'}">&nbsp;&nbsp;<b>Yu-gi-oh! Deck Builder</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{'/cardlist/'}">View All Cards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/cards/'}">Create Deck</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/randomCard/'}">Random Card<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <br><br>
+
+
+    <div class="container">
+        <h1  th:text="${randomCard.getCardName()}"></h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div style="transform: scale(0.9)">
+                    <img th:src="@{/img/{id}.jpg (id=${randomCard.getCardId()})}" class="rounded" alt="card's image">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <br><br>
+                <div class="row" th:utext="${'CARD TYPE :   ' + randomCard.getCardType()}"></div>
+                <div class="row " th:utext="${'CARD SUBTYPES :   ' + randomCard.getCardSubtype()}"></div>
+                <div class="row" th:if="${randomCard.getCardType() == 'MONSTER'}" th:utext="${'LEVEL :   ' + randomCard.getMonsterLevel()}"></div>
+                <div class="row" th:if="${randomCard.getCardType() == 'MONSTER'}" th:utext="${'ATTRIBUTE :   ' + randomCard.getMonsterAttribute()}"></div>
+                <div class="row" th:if="${randomCard.getCardType() == 'MONSTER'}" th:utext="${'ATTACK :   ' + randomCard.getMonsterAttack()}"></div>
+                <div class="row" th:if="${randomCard.getCardType() == 'MONSTER'}" th:utext="${'DEFENCE :   ' + randomCard.getMonsterDefence()}"></div>
+                <div class="row" th:utext="${'TEXT :   ' + randomCard.getCardText()}"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <br><br><br><br>
+
+</body>
+
+</html>
