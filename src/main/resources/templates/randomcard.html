@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="ISO-8859-1">
     <title>Yu-Gi-Oh DeckBuilder</title>
@@ -28,6 +29,7 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{'/randomCard/'}">Random Card<span class="sr-only">(current)</span></a>
                 </li>
+                <li sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>
     </nav>

@@ -30,6 +30,11 @@ public class CardController {
         this.cardService = cardService;
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/")
     public String firstPage(){
         return "redirect:/onlycards/1";

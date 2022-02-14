@@ -1,12 +1,9 @@
 package com.ygo.ygodeckbuilder.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "cards")
+@Table(name = "cards",uniqueConstraints = @UniqueConstraint(columnNames = "card_id"))
 public class Card {
 
     @Id
